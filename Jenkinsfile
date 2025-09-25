@@ -1,14 +1,13 @@
 pipeline {
     agent any
     stages {
-        stage('Build') { 
+        stage('Build') {
             steps {
-                sh 'dotnet restore' 
-                sh 'dotnet build --no-restore' 
+                sh 'dotnet restore'
+                sh 'dotnet build --no-restore'
             }
         }
-    }
-    stage('Test') {
+        stage('Test') { 
             steps {
                 sh 'dotnet test --no-build --no-restore --collect "XPlat Code Coverage"'
             }
@@ -18,4 +17,5 @@ pipeline {
                 }
             }
         }
+    }
 }
